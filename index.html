@@ -385,6 +385,69 @@
   .taller ol, .taller ul{margin:6px 0 0; padding-left:20px; font-size:.92rem;}
   .taller li{margin:3px 0;}
 
+  /* ---------- navegación: inicio > materia > clase ---------- */
+  .breadcrumb{
+    font-family:"IBM Plex Mono",monospace; font-size:.8rem;
+    color:var(--ink-faint); margin:0 0 20px;
+  }
+  .breadcrumb a{color:var(--accent-strong); text-decoration:none;}
+  .breadcrumb a:hover{text-decoration:underline;}
+  .breadcrumb .sep{margin:0 6px; color:var(--ink-faint);}
+
+  .home-semestre{margin-bottom:36px;}
+  .home-semestre-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin:0 0 16px;
+  }
+  .home-semestre-head .num{
+    font-family:"IBM Plex Mono",monospace; font-size:.8rem;
+    background:var(--accent); color:var(--surface);
+    padding:4px 10px; border-radius:999px; letter-spacing:.06em;
+  }
+  .home-semestre-head h1{font-size:1.4rem; margin:0; font-weight:700;}
+
+  .card-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+  }
+  @media (max-width:700px){.card-grid{grid-template-columns:1fr;}}
+
+  a.materia-card, a.clase-card{
+    display:block; text-decoration:none; color:var(--ink);
+    background:var(--surface); border:1px solid var(--line);
+    border-radius:16px; padding:20px 22px;
+    box-shadow:var(--shadow);
+    transition:border-color .15s, transform .15s;
+  }
+  a.materia-card:hover, a.clase-card:hover{
+    border-color:var(--accent); transform:translateY(-2px);
+  }
+  a.materia-card h3{margin:0 0 8px; font-size:1.15rem; font-weight:600; color:var(--accent-strong);}
+  a.materia-card .materia-meta{margin-top:10px;}
+  a.materia-card .count{
+    display:inline-block; margin-top:12px;
+    font-family:"IBM Plex Mono",monospace; font-size:.78rem;
+    color:var(--ink-faint);
+  }
+
+  a.clase-card{margin-bottom:14px;}
+  a.clase-card .clase-fecha{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--surface); background:var(--accent);
+    padding:4px 9px; border-radius:999px; display:inline-block; margin-bottom:10px;
+  }
+  a.clase-card h3{margin:0 0 6px; font-size:1.15rem; font-weight:600;}
+  a.clase-card p{margin:0; font-size:.9rem; color:var(--ink-faint);}
+
+  #view-materia .materia-intro{margin-bottom:24px;}
+  #view-materia .materia-intro h2{margin:0 0 10px; font-size:1.4rem; color:var(--accent-strong);}
+
+  /* al mostrar una sola clase, se retira el "cajón" de semestre/materia que la envuelve */
+  .semestre-block.chromeless{border:none; background:none; padding:0; border-radius:0; margin-bottom:0;}
+  .semestre-block.chromeless > .semestre-head{display:none;}
+  .materia-block.chromeless-inner{border-left:none; padding-left:0; margin-left:0;}
+  .materia-block.chromeless-inner > .materia-head{display:none;}
+
   footer.end{
     text-align:center; color:var(--ink-faint); font-size:.85rem;
     padding-top:10px;
@@ -436,6 +499,12 @@
     </aside>
 
     <main>
+
+      <nav id="breadcrumb" class="breadcrumb" hidden></nav>
+      <div id="view-home"></div>
+      <div id="view-materia" hidden></div>
+
+      <div id="content-root" hidden>
 
       <!-- ===================== SEMESTRE 1 ===================== -->
       <section class="semestre-block" id="semestre-1" data-semestre="1">
@@ -1032,6 +1101,9 @@
       </section>
       <!-- /semestre 1 -->
 
+      </div>
+      <!-- /content-root -->
+
       <!--
         Cómo seguir esta bitácora:
 
@@ -1060,9 +1132,12 @@
              <article class="tema">...</article>
            </section>
 
+           La navegación (Inicio > Materia > Clase) se genera sola con JavaScript leyendo
+           esta estructura — no hay que tocar nada más para que aparezca un botón nuevo.
+
         4. Reflejar cada nivel nuevo en el panel "Índice" de la barra lateral
            (<details class="idx-sem">Semestre</details> > <details class="idx-materia">Materia</details> > <ul class="index-list">Clases</ul>),
-           y actualizar los contadores del panel "Resumen".
+           y actualizar los contadores del panel "Resumen". Estos sí son manuales.
 
         5. Las tareas asignadas van en el panel "Tareas pendientes" como <li> con fecha límite.
       -->
@@ -1071,5 +1146,113 @@
     </main>
   </div>
 </div>
+
+<script>
+(function(){
+  var home = document.getElementById('view-home');
+  var materiaView = document.getElementById('view-materia');
+  var contentRoot = document.getElementById('content-root');
+  var crumb = document.getElementById('breadcrumb');
+
+  function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+  function clearChromeless(){
+    document.querySelectorAll('.semestre-block.chromeless').forEach(function(el){ el.classList.remove('chromeless'); });
+    document.querySelectorAll('.materia-block.chromeless-inner').forEach(function(el){ el.classList.remove('chromeless-inner'); });
+  }
+
+  function renderHome(){
+    var html = '';
+    document.querySelectorAll('#content-root > .semestre-block').forEach(function(sem){
+      var num = sem.querySelector('.semestre-head .num');
+      var year = sem.querySelector('.semestre-head h1');
+      html += '<div class="home-semestre"><div class="home-semestre-head">' +
+        (num ? '<span class="num">'+esc(num.textContent)+'</span>' : '') +
+        (year ? '<h1>'+esc(year.textContent)+'</h1>' : '') + '</div>';
+      html += '<div class="card-grid">';
+      sem.querySelectorAll(':scope > .materia-block').forEach(function(mat){
+        var name = mat.dataset.materia || (mat.querySelector('h2') ? mat.querySelector('h2').textContent : '');
+        var meta = mat.querySelector('.materia-meta');
+        var count = mat.querySelectorAll('.clase').length;
+        html += '<a class="materia-card" href="#'+mat.id+'"><h3>'+esc(name)+'</h3>' +
+          (meta ? '<div class="materia-meta">'+meta.innerHTML+'</div>' : '') +
+          '<span class="count">'+count+' clase'+(count===1?'':'s')+' registrada'+(count===1?'':'s')+'</span></a>';
+      });
+      html += '</div></div>';
+    });
+    home.innerHTML = html || '<p class="task-empty">Todavía no hay materias registradas.</p>';
+  }
+
+  function renderMateria(mat){
+    var sem = mat.closest('.semestre-block');
+    var name = mat.dataset.materia || (mat.querySelector('h2') ? mat.querySelector('h2').textContent : '');
+    var meta = mat.querySelector('.materia-meta');
+    crumb.hidden = false;
+    crumb.innerHTML = '<a href="#home">Inicio</a><span class="sep">›</span>'+esc(name);
+
+    var html = '<div class="materia-intro"><h2>'+esc(name)+'</h2>' +
+      (meta ? '<div class="materia-meta">'+meta.innerHTML+'</div>' : '') + '</div>';
+    mat.querySelectorAll('.clase').forEach(function(cl){
+      var fecha = cl.querySelector('.clase-head .clase-fecha');
+      var titulo = cl.querySelector('.clase-head h2');
+      var sub = cl.querySelector('.clase-head .clase-sub');
+      html += '<a class="clase-card" href="#'+cl.id+'">' +
+        (fecha ? '<span class="clase-fecha">'+esc(fecha.textContent)+'</span>' : '') +
+        (titulo ? '<h3>'+esc(titulo.textContent)+'</h3>' : '') +
+        (sub ? '<p>'+esc(sub.textContent)+'</p>' : '') + '</a>';
+    });
+    materiaView.innerHTML = html;
+  }
+
+  function renderClaseCrumb(mat, clase){
+    var materiaName = mat.dataset.materia || (mat.querySelector('h2') ? mat.querySelector('h2').textContent : '');
+    var fecha = clase.querySelector('.clase-head .clase-fecha');
+    crumb.hidden = false;
+    crumb.innerHTML = '<a href="#home">Inicio</a><span class="sep">›</span>' +
+      '<a href="#'+mat.id+'">'+esc(materiaName)+'</a><span class="sep">›</span>' +
+      esc(fecha ? fecha.textContent : 'Clase');
+  }
+
+  function route(){
+    var hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+    home.hidden = true; materiaView.hidden = true; contentRoot.hidden = true; crumb.hidden = true;
+
+    if(!hash || hash === 'home'){
+      renderHome();
+      home.hidden = false;
+      return;
+    }
+
+    var target = document.getElementById(hash);
+
+    if(target && target.classList.contains('materia-block')){
+      renderMateria(target);
+      materiaView.hidden = false;
+      return;
+    }
+
+    if(target && target.classList.contains('clase')){
+      var mat = target.closest('.materia-block');
+      var sem = target.closest('.semestre-block');
+      clearChromeless();
+      document.querySelectorAll('#content-root > .semestre-block').forEach(function(s){ s.hidden = (s !== sem); });
+      sem.classList.add('chromeless');
+      sem.querySelectorAll(':scope > .materia-block').forEach(function(m){ m.hidden = (m !== mat); });
+      mat.classList.add('chromeless-inner');
+      mat.querySelectorAll('.clase').forEach(function(c){ c.hidden = (c !== target); });
+      renderClaseCrumb(mat, target);
+      contentRoot.hidden = false;
+      window.scrollTo(0,0);
+      return;
+    }
+
+    renderHome();
+    home.hidden = false;
+  }
+
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
 
 </body></html>
