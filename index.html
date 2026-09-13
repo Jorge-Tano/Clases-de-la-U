@@ -88,6 +88,20 @@
     border-bottom:1px solid var(--line);
     margin-bottom:32px;
   }
+  .top-row{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  a.home-btn{
+    flex:none;
+    font-family:"IBM Plex Mono",monospace; font-size:.82rem;
+    color:var(--accent-strong); text-decoration:none;
+    background:var(--accent-soft); border:1px solid var(--accent);
+    padding:7px 14px; border-radius:999px;
+    margin-top:4px;
+  }
+  a.home-btn:hover{background:var(--accent); color:var(--surface);}
+  a.home-btn[hidden]{display:none;}
   .eyebrow{
     font-family:"IBM Plex Mono", monospace;
     font-size:.78rem;
@@ -457,8 +471,13 @@
 <div class="shell">
 
   <header class="top">
-    <p class="eyebrow">Ingeniería en Ciencia de Datos</p>
-    <h1 class="title">Bitácora de Ingeniería</h1>
+    <div class="top-row">
+      <div>
+        <p class="eyebrow">Ingeniería en Ciencia de Datos</p>
+        <h1 class="title">Bitácora de Ingeniería</h1>
+      </div>
+      <a href="#home" class="home-btn" hidden>← Inicio</a>
+    </div>
     <p class="subtitle">Apuntes y tareas del programa, organizados por <b>semestre</b>, <b>materia</b> y <b>número de clase</b>. Un registro que se irá completando después de cada clase.</p>
   </header>
 
@@ -1153,6 +1172,7 @@
   var materiaView = document.getElementById('view-materia');
   var contentRoot = document.getElementById('content-root');
   var crumb = document.getElementById('breadcrumb');
+  var homeBtn = document.querySelector('a.home-btn');
 
   function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
@@ -1220,8 +1240,10 @@
     if(!hash || hash === 'home'){
       renderHome();
       home.hidden = false;
+      homeBtn.hidden = true;
       return;
     }
+    homeBtn.hidden = false;
 
     var target = document.getElementById(hash);
 
