@@ -319,6 +319,61 @@
 
   .links li{margin:3px 0; font-size:.92rem;}
 
+  .trio{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+    margin:4px 0 14px;
+  }
+  @media (max-width:760px){.trio{grid-template-columns:1fr;}}
+
+  blockquote.quote{
+    margin:0; background:var(--surface-alt); border-radius:12px;
+    padding:14px 16px; font-size:.92rem; color:var(--ink);
+  }
+  blockquote.quote p{margin:0 0 8px; font-style:italic;}
+  blockquote.quote cite{font-style:normal; font-size:.82rem; color:var(--ink-faint);}
+
+  table.truth, table.data{
+    border-collapse:collapse; margin:8px 0 16px; font-size:.86rem;
+  }
+  table.truth th, table.truth td{
+    border:1px solid var(--line); padding:4px 12px; text-align:center;
+    font-family:"IBM Plex Mono",monospace;
+  }
+  table.truth th{background:var(--surface-alt); color:var(--accent-strong); font-weight:600;}
+
+  table.data{width:100%; font-family:"Source Sans 3",sans-serif;}
+  table.data th, table.data td{
+    border:1px solid var(--line); padding:7px 12px; text-align:left;
+  }
+  table.data th{background:var(--surface-alt); color:var(--accent-strong); font-weight:600;}
+  table.data td:nth-child(3), table.data th:nth-child(3){text-align:center;}
+
+  ol.steps{margin:8px 0 14px; padding-left:0; list-style:none; counter-reset:step;}
+  ol.steps li{
+    counter-increment:step;
+    background:var(--surface-alt); border-radius:10px;
+    padding:9px 12px 9px 40px; margin:0 0 6px; position:relative;
+    font-size:.9rem;
+  }
+  ol.steps li::before{
+    content:counter(step);
+    position:absolute; left:10px; top:9px;
+    font-family:"IBM Plex Mono",monospace; font-weight:600;
+    color:var(--accent-strong); font-size:.8rem;
+  }
+  ol.steps .law{color:var(--ink-faint); font-size:.84rem; display:block; margin-top:2px;}
+
+  .taller{
+    border-left:3px solid var(--accent);
+    background:var(--accent-soft);
+    border-radius:0 10px 10px 0;
+    padding:12px 16px;
+    margin:6px 0 14px;
+  }
+  .taller b{color:var(--accent-strong);}
+  .taller ol, .taller ul{margin:6px 0 0; padding-left:20px; font-size:.92rem;}
+  .taller li{margin:3px 0;}
+
   footer.end{
     text-align:center; color:var(--ink-faint); font-size:.85rem;
     padding-top:10px;
@@ -340,8 +395,8 @@
         <h2>Resumen</h2>
         <div class="meta-row"><span>Programa</span><span>Ing. Ciencia de Datos</span></div>
         <div class="meta-row"><span>Semestre actual</span><span>1</span></div>
-        <div class="meta-row"><span>Materias</span><span>1</span></div>
-        <div class="meta-row"><span>Clases registradas</span><span>1</span></div>
+        <div class="meta-row"><span>Materias</span><span>2</span></div>
+        <div class="meta-row"><span>Clases registradas</span><span>2</span></div>
       </div>
 
       <div class="panel">
@@ -352,6 +407,12 @@
             <summary>Introducción a la Ingeniería</summary>
             <ul class="index-list">
               <li><a href="#s1-intro-ing-c1"><span class="n">01</span> Vie 11 sep — Conceptos básicos</a></li>
+            </ul>
+          </details>
+          <details class="idx-materia" open>
+            <summary>Matemáticas Discretas 1</summary>
+            <ul class="index-list">
+              <li><a href="#s1-mdisc-c1"><span class="n">01</span> Dom 13 sep — Presentación + Lógica Proposicional</a></li>
             </ul>
           </details>
         </details>
@@ -583,6 +644,380 @@
         </section>
         <!-- /materia s1-intro-ing -->
 
+        <!-- ----- Materia: Matemáticas Discretas 1 ----- -->
+        <section class="materia-block" id="s1-mdisc" data-materia="Matemáticas Discretas 1">
+          <div class="materia-head">
+            <h2>Matemáticas Discretas 1</h2>
+            <div class="materia-meta">
+              <span>Código: ING01180</span>
+              <span>Grupo: 73</span>
+              <span>Docente: Alejandro Giraldo Salazar</span>
+              <span>Periodo: 13/09/2026 – 01/11/2026</span>
+            </div>
+          </div>
+
+      <section class="clase" id="s1-mdisc-c1" data-fecha="2026-09-13">
+        <div class="clase-head">
+          <span class="clase-fecha">Clase 01 · Dom 13 sep 2026</span>
+          <h2>Presentación del curso + Capítulo 1: Lógica Proposicional</h2>
+          <span class="clase-sub">Primera sesión: reglas de juego del curso y arranque del capítulo 1 — proposiciones, conectores lógicos, tablas de verdad y álgebra de proposiciones.</span>
+        </div>
+
+        <article class="tema">
+          <h3><span class="idx">1</span> Presentación del docente y del curso</h3>
+          <div class="pair">
+            <div class="card">
+              <h4>Docente</h4>
+              <p>Alejandro Giraldo Salazar</p>
+              <ul>
+                <li>Ingeniería Civil — especialista en construcción e interventoría de obras</li>
+                <li>Universidad de Medellín</li>
+                <li>Horario de atención: 7:00 am – 5:00 pm, lunes a viernes</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Curso</h4>
+              <ul>
+                <li>Código: ING01180</li>
+                <li>Grupo: 73</li>
+                <li>Inicio: 13/09/2026</li>
+                <li>Finalización: 01/11/2026</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">2</span> Parámetros y máximas de la clase</h3>
+          <div class="pair">
+            <div class="card">
+              <h4>Parámetros</h4>
+              <ul>
+                <li>El respeto es primordial y va en las dos direcciones.</li>
+                <li>Nadie está obligado a asistir — las cosas se hacen por voluntad propia para sacar el máximo provecho.</li>
+                <li>No existen preguntas tontas: el conocimiento es un derecho y se asimila de maneras distintas.</li>
+                <li>Escuchar a los compañeros con atención — la inquietud del otro puede ser la propia.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Máximas de la clase</h4>
+              <div class="chips">
+                <span class="chip">Arriésguense</span>
+                <span class="chip">Cometan errores</span>
+                <span class="chip">Pregunten</span>
+                <span class="chip">Investiguen</span>
+                <span class="chip">Trabajen duro</span>
+                <span class="chip">Crean en ustedes</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">3</span> Metodología y contenidos del curso</h3>
+          <div class="pair">
+            <div class="card">
+              <h4>Metodología de trabajo</h4>
+              <ul>
+                <li>Clases magistrales</li>
+                <li>Aclaración de inquietudes</li>
+                <li>Ejercicios resueltos en clase</li>
+                <li>Ejercicios propuestos para trabajo independiente</li>
+                <li>Solución de dudas particular y/o grupal</li>
+                <li>Polipuntos</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Contenidos del curso</h4>
+              <ul>
+                <li>Cap. 1: Cálculo Proposicional</li>
+                <li>Cap. 2: Cálculo Cuantificacional o de Predicados</li>
+                <li>Cap. 3: Teoría de Conjuntos</li>
+                <li>Cap. 4: Relaciones y Funciones</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">4</span> Reglas y ponderación de evaluación</h3>
+          <p class="note">El parcial es individual. Los exámenes son en parejas. No se permite sacar apuntes; se puede traer una ficha bibliográfica con fórmulas y tablas (se revisa antes de la prueba). Si algo no queda claro en un examen: no supongan, pregunten.</p>
+          <div style="overflow-x:auto;">
+            <table class="data">
+              <tr><th>Actividad</th><th>Contenido</th><th>%</th><th>Fecha</th></tr>
+              <tr><td>QUIZ #1</td><td>Capítulo 1 – 2</td><td>12.5%</td><td>27/09/2026</td></tr>
+              <tr><td>TALLER #2 (sustentable)</td><td>Capítulo 2 – 3</td><td>12.5%</td><td>04/10/2026</td></tr>
+              <tr><td>PARCIAL #1</td><td>Capítulo 1, 2</td><td>25%</td><td>04/10/2026</td></tr>
+              <tr><td>QUIZ #3</td><td>Capítulo 3 – 4</td><td>12.5%</td><td>18/10/2026</td></tr>
+              <tr><td>TALLER #4 (sustentable)</td><td>Capítulo 4</td><td>12.5%</td><td>01/11/2026</td></tr>
+              <tr><td>PARCIAL #2</td><td>Capítulo 3 y 4</td><td>25%</td><td>01/11/2026</td></tr>
+            </table>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">5</span> ¿Qué es la lógica?</h3>
+          <div class="trio">
+            <blockquote class="quote">
+              <p>"La lógica puede entenderse como el estudio de los instrumentos y principios que permiten distinguir los razonamientos válidos de los inválidos."</p>
+              <cite>— Aristóteles</cite>
+            </blockquote>
+            <blockquote class="quote">
+              <p>"Es una disciplina susceptible de ser expresada mediante leyes y operaciones formales, contribuyendo así al desarrollo de la lógica matemática y simbólica."</p>
+              <cite>— George Boole</cite>
+            </blockquote>
+            <blockquote class="quote">
+              <p>"La lógica es una herramienta fundamental para analizar las estructuras del lenguaje, las proposiciones y las relaciones que permiten establecer inferencias válidas."</p>
+              <cite>— Bertrand Russell</cite>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">6</span> Capítulo 1 — Proposiciones</h3>
+          <p>Una proposición es una oración declarativa con un único valor de verdad: verdadera (V) o falsa (F), pero nunca ambos ni ninguno. Se representan con letras minúsculas: p, q, r, s...</p>
+          <p class="note">Ejemplo: p: "María tiene ojos verdes" (F) — q: "2+2 es 4" (V) — r: "Hoy se inician las clases de Discretas 1" (V).</p>
+          <div class="card" style="margin-bottom:14px;">
+            <h4>¿Qué NO es una proposición?</h4>
+            <ul>
+              <li>Preguntas: "¿Qué hora es?"</li>
+              <li>Órdenes o exclamaciones: "¡Cierra la puerta!"</li>
+              <li>Opiniones subjetivas sin criterio objetivo de verdad: "El azul es el color más bonito"</li>
+              <li>Enunciados con variables libres sin cuantificar: "x + 2 = 5" (es una función proposicional hasta que x tome un valor)</li>
+            </ul>
+          </div>
+          <div class="pair">
+            <div class="card">
+              <h4>Simples (atómicas)</h4>
+              <p>Expresan una sola idea, sin conectores ni negaciones.</p>
+              <ul>
+                <li>El perro está cojo.</li>
+                <li>El sol ilumina el cielo.</li>
+                <li>Los peces vuelan.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Compuestas (moleculares)</h4>
+              <p>Dos o más proposiciones simples unidas por conectores lógicos o el adverbio "no".</p>
+              <ul>
+                <li>El perro está cojo y el sol ilumina el cielo.</li>
+                <li>Juan tiene examen mañana y los peces vuelan.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">7</span> Argumentos lógicos: validez vs. verdad</h3>
+          <div class="flow">
+            <span class="step">Premisa 1</span><span class="arrow">+</span>
+            <span class="step">Premisa 2</span><span class="arrow">+</span>
+            <span class="step">… Premisa n</span><span class="arrow">⟹</span>
+            <span class="step">∴ Conclusión</span>
+          </div>
+          <div class="pair">
+            <div class="card">
+              <h4>Verdad</h4>
+              <p>Propiedad de las proposiciones: lo afirmado concuerda con los hechos. Es verdadera si el mundo es tal como ella lo describe.</p>
+            </div>
+            <div class="card">
+              <h4>Validez</h4>
+              <p>Propiedad exclusiva de los argumentos: depende de la estructura, no del contenido. Es válido si es imposible que las premisas sean verdaderas y la conclusión falsa a la vez.</p>
+            </div>
+          </div>
+          <p class="note">Cuatro casos estudiados en clase:</p>
+          <div class="pair">
+            <div class="card">
+              <h4>Caso 1 · Válido, con premisas y conclusión falsas</h4>
+              <p>"Todos los perros tienen ocho patas. Los gatos son perros. Por lo tanto, los gatos tienen ocho patas." — Válido porque la estructura (silogismo) es correcta, aunque el contenido sea falso.</p>
+            </div>
+            <div class="card">
+              <h4>Caso 4 · Argumento sólido</h4>
+              <p>"Todos los humanos son mortales. Sócrates es humano. Luego, Sócrates es mortal." — Válido y con premisas verdaderas: la conclusión queda garantizada.</p>
+            </div>
+          </div>
+          <p class="note">Caso 2 (inválido con premisas y conclusión verdaderas pero sin relación lógica entre ellas) y Caso 3 (inválido por duda: la conclusión no queda completamente sustentada por las premisas) quedan detallados en las diapositivas originales.</p>
+          <div class="taller">
+            <b>Taller #1</b>
+            <ol>
+              <li>Determinar cuáles enunciados son proposiciones lógicas y asignar valor de verdad cuando sea posible (5 enunciados dados).</li>
+              <li>Clasificar 3 proposiciones dadas como simples o compuestas.</li>
+              <li>Identificar premisas y conclusión de dos argumentos dados y evaluar su validez.</li>
+              <li>Construir un ejemplo propio de argumento inválido relacionado con ingeniería en ciencia de datos, señalando por qué falla la inferencia.</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">8</span> Conectores lógicos y tablas de verdad</h3>
+          <div class="pair">
+            <div class="card">
+              <h4>Negación "¬p"</h4>
+              <p>Invierte el valor de verdad de una proposición.</p>
+              <table class="truth"><tr><th>p</th><th>¬p</th></tr><tr><td>V</td><td>F</td></tr><tr><td>F</td><td>V</td></tr></table>
+            </div>
+            <div class="card">
+              <h4>Conjunción "p ∧ q"</h4>
+              <p>Verdadera solo si ambas proposiciones son verdaderas.</p>
+              <table class="truth"><tr><th>p</th><th>q</th><th>p∧q</th></tr><tr><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td></tr><tr><td>F</td><td>F</td><td>F</td></tr></table>
+            </div>
+            <div class="card">
+              <h4>Disyunción inclusiva "p ∨ q"</h4>
+              <p>Falsa solo si ambas proposiciones son falsas.</p>
+              <table class="truth"><tr><th>p</th><th>q</th><th>p∨q</th></tr><tr><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>V</td></tr><tr><td>F</td><td>V</td><td>V</td></tr><tr><td>F</td><td>F</td><td>F</td></tr></table>
+            </div>
+            <div class="card">
+              <h4>Disyunción exclusiva "p ⊕ q"</h4>
+              <p>Verdadera solo si exactamente una es verdadera (no ambas, no ninguna). Con 3+ proposiciones: V si hay un número impar de V.</p>
+              <table class="truth"><tr><th>p</th><th>q</th><th>p⊕q</th></tr><tr><td>V</td><td>V</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td></tr><tr><td>F</td><td>V</td><td>V</td></tr><tr><td>F</td><td>F</td><td>F</td></tr></table>
+            </div>
+            <div class="card">
+              <h4>Condicional "p → q"</h4>
+              <p>p = antecedente, q = consecuente. Falsa solo si el antecedente es V y el consecuente F.</p>
+              <table class="truth"><tr><th>p</th><th>q</th><th>p→q</th></tr><tr><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td></tr><tr><td>F</td><td>F</td><td>V</td></tr></table>
+            </div>
+            <div class="card">
+              <h4>Bicondicional "p ↔ q"</h4>
+              <p>Verdadera solo si antecedente y consecuente tienen el mismo valor de verdad.</p>
+              <table class="truth"><tr><th>p</th><th>q</th><th>p↔q</th></tr><tr><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td></tr></table>
+            </div>
+          </div>
+          <p class="note">Otros conectores: <b>NAND</b> (negación de la conjunción), <b>NOR</b> (negación de la disyunción), <b>XNOR</b> (negación de la disyunción exclusiva).</p>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">9</span> Jerarquía de operadores</h3>
+          <p>Cuando varias proposiciones están conectadas sin paréntesis, se resuelven en este orden:</p>
+          <div class="flow">
+            <span class="step">¬ Negación</span><span class="arrow">→</span>
+            <span class="step">∧ Conjunción</span><span class="arrow">→</span>
+            <span class="step">∨ Disyunción</span><span class="arrow">→</span>
+            <span class="step">→ Condicional</span><span class="arrow">→</span>
+            <span class="step">↔ Bicondicional</span>
+          </div>
+          <p class="note">Se usan paréntesis para evitar ambigüedad.</p>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">10</span> Lenguaje natural ↔ lenguaje lógico</h3>
+          <ul>
+            <li>"María estudia matemáticas avanzadas y física cuántica" → p ∧ q</li>
+            <li>"Juan es carpintero o es mecánico" → p ∨ q</li>
+            <li>"O mi familia viene en junio o viene en diciembre" → p ⊕ q</li>
+            <li>"Si Argentina ganaba la final entonces Messi no se retiraba" → p → q</li>
+            <li>"El banco me aprobará el préstamo si y solo si tengo buen historial crediticio" → p ↔ q</li>
+            <li>"Spider Man no es una película interesante" → ¬p</li>
+            <li>"Si como sano y voy al gimnasio, entonces tendré una vida saludable" → (q ∧ p) → r</li>
+            <li>"La clase será larga si y solo si el profesor la dicta seguida y sin darnos descanso" → p ↔ (q ∧ ¬r)</li>
+          </ul>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">11</span> Construcción de tablas de verdad</h3>
+          <p class="note">Pasos: (1) identificar las proposiciones simples, (2) listar todas las combinaciones de V/F, (3) evaluar la expresión de adentro hacia afuera respetando jerarquías y paréntesis.</p>
+          <div class="pair">
+            <div class="card">
+              <h4>2 proposiciones</h4>
+              <table class="truth"><tr><th>p</th><th>q</th></tr><tr><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td></tr><tr><td>F</td><td>V</td></tr><tr><td>F</td><td>F</td></tr></table>
+            </div>
+            <div class="card">
+              <h4>Ejemplo: (p ∧ q) → ¬p</h4>
+              <table class="truth"><tr><th>p</th><th>q</th><th>p∧q</th><th>¬p</th><th>(p∧q)→¬p</th></tr><tr><td>V</td><td>V</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>V</td></tr><tr><td>F</td><td>V</td><td>F</td><td>V</td><td>V</td></tr><tr><td>F</td><td>F</td><td>F</td><td>V</td><td>V</td></tr></table>
+            </div>
+          </div>
+          <div class="taller">
+            <b>Taller #2</b>
+            <ol>
+              <li>Traducir a lenguaje simbólico: "Si la base de datos cumple los parámetros de aceptación del cliente y el presupuesto lo permite, entonces el negocio se cierra".</li>
+              <li>Traducir a lenguaje natural (p: "Estudio", q: "Apruebo el examen"): p→q; ¬p→¬q; q↔p.</li>
+              <li>Construir la tabla de verdad de p ∨ (q ∧ ¬r).</li>
+              <li>Construir la tabla de verdad de (p→q) ∧ (q→p).</li>
+              <li>Evaluar ¬(p ∨ q) → r cuando p=F, q=V, r=F.</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">12</span> Tautología, contradicción y contingencia</h3>
+          <div class="pair">
+            <div class="card">
+              <h4>Tautología</h4>
+              <p>Verdadera para todas las combinaciones (columna final solo V). Sirve para demostrar consistencia.</p>
+              <table class="truth"><tr><th>p</th><th>¬p</th><th>p∨¬p</th></tr><tr><td>V</td><td>F</td><td>V</td></tr><tr><td>F</td><td>V</td><td>V</td></tr></table>
+            </div>
+            <div class="card">
+              <h4>Contradicción</h4>
+              <p>Falsa para todas las combinaciones (columna final solo F). Sirve para demostrar inconsistencia.</p>
+              <table class="truth"><tr><th>p</th><th>¬p</th><th>p∧¬p</th></tr><tr><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td></tr></table>
+            </div>
+          </div>
+          <p class="note"><b>Contingencia (o incierto):</b> toma tanto V como F según las variables — no es tautología ni contradicción. Se usa, por ejemplo, para construir circuitos de control y automatismo.</p>
+          <div class="taller">
+            <b>Taller #3</b>
+            <ol>
+              <li>Determinar si (p ∧ q) → p es tautología, contradicción o contingencia.</li>
+              <li>Determinar si p ∧ (¬p ∧ q) es tautología, contradicción o contingencia.</li>
+              <li>Construir la tabla de verdad de p ∨ (q ∧ ¬r).</li>
+              <li>Construir la tabla de verdad de (p→q) ∧ (q→p).</li>
+              <li>Evaluar ¬(p ∨ q) → r cuando p=F, q=V, r=F.</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">13</span> Álgebra de proposiciones</h3>
+          <p>Sistema axiomático consistente, completo e independiente que se usa para construir y simplificar proposiciones complejas.</p>
+          <div class="chips">
+            <span class="chip">Símbolos lógicos (V, F)</span>
+            <span class="chip">Constantes</span>
+            <span class="chip">Variables (p, q, r...)</span>
+            <span class="chip">Signos de agrupación ( )</span>
+            <span class="chip">Operacionales: ∨ ∧ ¬ →</span>
+            <span class="chip">Relacional: ⟺</span>
+          </div>
+          <p class="note">Leyes vistas en clase (se demuestran con tablas de verdad del bicondicional):</p>
+          <ul>
+            <li><b>Idempotencia:</b> aplicar la misma operación sobre una proposición consigo misma no cambia el resultado.</li>
+            <li><b>Identidad:</b> una proposición unida con ∧ a Verdadero queda igual; unida con ∨ a Falso queda igual.</li>
+            <li><b>Dominación, Asociativa, Distributiva, Complementación</b> y <b>Leyes restantes</b> (De Morgan, absorción, etc.) — quedaron en las diapositivas originales como tablas/diagramas.</li>
+            <li><b>Involución (doble negación):</b> negar dos veces una proposición la deja en su estado original; un número impar de negaciones equivale a una sola negación.</li>
+          </ul>
+          <div class="callout">Nota: varias diapositivas de esta sección (Dominación, Asociativa, Distributiva, Complementación, "leyes restantes") solo traían tablas/diagramas de imagen sin texto extraíble — vale la pena revisarlas directo en el PPTX o pedirle a Alejandro el resumen escrito de cada ley.</div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">14</span> Ejercicio resuelto — simplificación</h3>
+          <p class="note">Ejercicio #1a: ¬((¬p∧q)∨q) ∨ ¬((s∨¬q)∧s)</p>
+          <ol class="steps">
+            <li>¬((¬p∧q)∨q) ∨ ¬((s∨¬q)∧s)<span class="law">Aplicando Ley de Involución sobre (s∨¬q)∧s ≡ s</span></li>
+            <li>¬((¬p∧q)∨q) ∨ ¬s<span class="law">Aplicando Ley de Involución sobre (¬p∧q)∨q ≡ q</span></li>
+            <li>¬p ∨ ¬s<span class="law">Aplicando Ley de De Morgan</span></li>
+            <li>¬(p ∧ s)<span class="law">Resultado final</span></li>
+          </ol>
+          <p class="note">Ejercicio #1b: (((p∨r)∧q)∨(p∨r)) ∧ (¬p∨r)</p>
+          <ol class="steps">
+            <li>(((p∨r)∧q)∨(p∨r)) ∧ (¬p∨r)<span class="law">Aplicando Ley de Absorción: ((p∨r)∧q)∨(p∨r) ≡ (p∨r)</span></li>
+            <li>(p∨r) ∧ (¬p∨r)<span class="law">Aplicando Ley Conmutativa ≡ (r∨p) ∧ (r∨¬p)</span></li>
+            <li>(r∨p) ∧ (r∨¬p)<span class="law">Aplicando Ley Distributiva ≡ r ∨ (p∧¬p)</span></li>
+            <li>r ∨ (p∧¬p)<span class="law">Aplicando Ley de Contradicción: (p∧¬p) ≡ F</span></li>
+            <li>r ∨ F<span class="law">Aplicando Ley de Identidad</span></li>
+            <li>r<span class="law">Resultado final</span></li>
+          </ol>
+          <div class="taller">
+            <b>Taller #4</b>
+            <ol>
+              <li>"Como Juan es condenado, debe ser el asesino. Entonces, Juan es el asesino y debe ser condenado." — simplificar hasta la mínima expresión.</li>
+              <li>"Como al trabajar debo casarme, entonces, no es el hecho de que si no me caso deba trabajar." — simplificar hasta la mínima expresión.</li>
+            </ol>
+          </div>
+        </article>
+
+      </section>
+      <!-- /clase s1-mdisc-c1 -->
+
+        </section>
+        <!-- /materia s1-mdisc -->
+
       </section>
       <!-- /semestre 1 -->
 
@@ -621,7 +1056,7 @@
         5. Las tareas asignadas van en el panel "Tareas pendientes" como <li> con fecha límite.
       -->
 
-      <footer class="end">Última actualización: clase del 11 de septiembre de 2026.</footer>
+      <footer class="end">Última actualización: clase del 13 de septiembre de 2026 (Matemáticas Discretas 1).</footer>
     </main>
   </div>
 </div>
