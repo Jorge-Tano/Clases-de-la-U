@@ -409,6 +409,10 @@
   .breadcrumb a{color:var(--accent-strong); text-decoration:none;}
   .breadcrumb a:hover{text-decoration:underline;}
   .breadcrumb .sep{margin:0 6px; color:var(--ink-faint);}
+  #breadcrumb-bottom{
+    margin:12px 0 0; padding-top:18px;
+    border-top:1px solid var(--line);
+  }
 
   .home-semestre{margin-bottom:36px;}
   .home-semestre-head{
@@ -492,6 +496,7 @@
         <div class="meta-row"><span>Semestre actual</span><span>1</span></div>
         <div class="meta-row"><span>Materias</span><span>2</span></div>
         <div class="meta-row"><span>Clases registradas</span><span>2</span></div>
+        <div class="meta-row"><span>Próxima entrega</span><span>Quiz #1 · 27/09</span></div>
       </div>
 
       <div class="panel">
@@ -515,7 +520,15 @@
 
       <div class="panel">
         <h2>Tareas pendientes</h2>
-        <p class="task-empty">No se dejaron tareas en esta primera clase. Cuando el profesor asigne una, se agrega aquí como pendiente.</p>
+        <ul class="task-list">
+          <li><span class="dot"></span><div>Quiz #1 — Mat. Discretas 1<span class="due">Cap. 1–2 · 27/09/2026 · 12.5%</span></div></li>
+          <li><span class="dot"></span><div>Taller #2 (sustentable) — Mat. Discretas 1<span class="due">Cap. 2–3 · 04/10/2026 · 12.5%</span></div></li>
+          <li><span class="dot"></span><div>Parcial #1 — Mat. Discretas 1<span class="due">Cap. 1–2 · 04/10/2026 · 25%</span></div></li>
+          <li><span class="dot"></span><div>Quiz #3 — Mat. Discretas 1<span class="due">Cap. 3–4 · 18/10/2026 · 12.5%</span></div></li>
+          <li><span class="dot"></span><div>Taller #4 (sustentable) — Mat. Discretas 1<span class="due">Cap. 4 · 01/11/2026 · 12.5%</span></div></li>
+          <li><span class="dot"></span><div>Parcial #2 — Mat. Discretas 1<span class="due">Cap. 3–4 · 01/11/2026 · 25%</span></div></li>
+        </ul>
+        <p class="task-empty" style="margin-top:10px;">Introducción a la Ingeniería: sin tareas asignadas todavía.</p>
       </div>
     </aside>
 
@@ -762,6 +775,10 @@
           <span class="clase-fecha">Clase 01 · Dom 13 sep 2026</span>
           <h2>Presentación del curso + Capítulo 1: Lógica Proposicional</h2>
           <span class="clase-sub">Primera sesión: reglas de juego del curso y arranque del capítulo 1 — proposiciones, conectores lógicos, tablas de verdad y álgebra de proposiciones.</span>
+        </div>
+
+        <div class="callout" style="margin-bottom:24px;">
+          <b>Nota:</b> el Quiz #1 (27/09/2026, 12.5%) cubre justo el contenido de esta clase — repasar sobre todo proposiciones, conectores lógicos y tablas de verdad (temas 6 a 12 más abajo) antes de esa fecha.
         </div>
 
         <article class="tema">
@@ -1122,6 +1139,8 @@
       </section>
       <!-- /semestre 1 -->
 
+      <nav id="breadcrumb-bottom" class="breadcrumb" hidden></nav>
+
       </div>
       <!-- /content-root -->
 
@@ -1177,6 +1196,7 @@
   var homeBtn = document.querySelector('a.home-btn');
   var sidebar = document.getElementById('sidebar');
   var layout = document.getElementById('layout');
+  var crumbBottom = document.getElementById('breadcrumb-bottom');
 
   function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
@@ -1231,15 +1251,18 @@
   function renderClaseCrumb(mat, clase){
     var materiaName = mat.dataset.materia || (mat.querySelector('h2') ? mat.querySelector('h2').textContent : '');
     var fecha = clase.querySelector('.clase-head .clase-fecha');
-    crumb.hidden = false;
-    crumb.innerHTML = '<a href="#home">Inicio</a><span class="sep">›</span>' +
+    var html = '<a href="#home">Inicio</a><span class="sep">›</span>' +
       '<a href="#'+mat.id+'">'+esc(materiaName)+'</a><span class="sep">›</span>' +
       esc(fecha ? fecha.textContent : 'Clase');
+    crumb.hidden = false;
+    crumb.innerHTML = html;
+    if(crumbBottom){ crumbBottom.hidden = false; crumbBottom.innerHTML = html + ' <span class="sep">·</span> <a href="#'+mat.id+'">↑ volver al listado de clases</a>'; }
   }
 
   function route(){
     var hash = decodeURIComponent(location.hash.replace(/^#/, ''));
     home.hidden = true; materiaView.hidden = true; contentRoot.hidden = true; crumb.hidden = true;
+    if(crumbBottom) crumbBottom.hidden = true;
 
     if(!hash || hash === 'home'){
       renderHome();
