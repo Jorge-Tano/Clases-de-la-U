@@ -129,6 +129,8 @@
     gap:36px;
     align-items:start;
   }
+  .layout.solo{grid-template-columns:1fr;}
+  aside.rail[hidden]{display:none;}
   @media (max-width:820px){
     .layout{grid-template-columns:1fr;}
     aside.rail{position:static !important;}
@@ -481,9 +483,9 @@
     <p class="subtitle">Apuntes y tareas del programa, organizados por <b>semestre</b>, <b>materia</b> y <b>número de clase</b>. Un registro que se irá completando después de cada clase.</p>
   </header>
 
-  <div class="layout">
+  <div class="layout" id="layout">
 
-    <aside class="rail">
+    <aside class="rail" id="sidebar">
       <div class="panel">
         <h2>Resumen</h2>
         <div class="meta-row"><span>Programa</span><span>Ing. Ciencia de Datos</span></div>
@@ -1173,6 +1175,8 @@
   var contentRoot = document.getElementById('content-root');
   var crumb = document.getElementById('breadcrumb');
   var homeBtn = document.querySelector('a.home-btn');
+  var sidebar = document.getElementById('sidebar');
+  var layout = document.getElementById('layout');
 
   function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
@@ -1241,9 +1245,13 @@
       renderHome();
       home.hidden = false;
       homeBtn.hidden = true;
+      sidebar.hidden = false;
+      layout.classList.remove('solo');
       return;
     }
     homeBtn.hidden = false;
+    sidebar.hidden = true;
+    layout.classList.add('solo');
 
     var target = document.getElementById(hash);
 
