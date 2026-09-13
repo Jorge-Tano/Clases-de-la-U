@@ -177,8 +177,58 @@
   .meta-row:last-child{border-bottom:none;}
   .meta-row span:first-child{color:var(--ink-faint);}
 
-  /* ---------- main / clases ---------- */
+  /* ---------- índice anidado (semestre > materia > clases) ---------- */
+  summary{cursor:pointer; user-select:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::marker{content:"";}
+
+  details.idx-sem{border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:8px;}
+  details.idx-sem:last-child{border-bottom:none; margin-bottom:0; padding-bottom:0;}
+  details.idx-sem > summary{
+    display:flex; align-items:center; gap:6px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:.72rem; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--accent-strong); padding:4px 2px;
+  }
+  details.idx-sem > summary::before{content:"▸"; display:inline-block; transition:transform .15s; font-size:.7rem;}
+  details.idx-sem[open] > summary::before{transform:rotate(90deg);}
+
+  details.idx-materia{margin:2px 0 6px 4px;}
+  details.idx-materia > summary{
+    display:flex; align-items:center; gap:6px;
+    font-size:.88rem; font-weight:600; color:var(--ink); padding:3px 2px;
+  }
+  details.idx-materia > summary::before{content:"›"; color:var(--ink-faint);}
+  details.idx-materia .index-list{margin:4px 0 2px 15px;}
+
+  /* ---------- main / semestres, materias, clases ---------- */
   main{min-width:0;}
+
+  .semestre-block{margin-bottom:12px;}
+  .semestre-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin:0 0 22px; padding-bottom:10px;
+    border-bottom:2px solid var(--accent-soft);
+  }
+  .semestre-head .num{
+    font-family:"IBM Plex Mono",monospace; font-size:.8rem;
+    background:var(--accent); color:var(--surface);
+    padding:4px 10px; border-radius:999px; letter-spacing:.06em;
+  }
+  .semestre-head h1{font-size:1.5rem; margin:0; font-weight:700;}
+
+  .materia-block{margin-bottom:36px;}
+  .materia-head{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px;
+    margin:0 0 16px;
+  }
+  .materia-head h2{font-size:1.3rem; margin:0; font-weight:600; color:var(--accent-strong);}
+  .materia-meta{display:flex; flex-wrap:wrap; gap:8px;}
+  .materia-meta span{
+    font-size:.82rem; color:var(--ink-soft);
+    background:var(--surface-alt); border:1px solid var(--line);
+    padding:3px 10px; border-radius:999px;
+  }
 
   section.clase{
     background:var(--surface);
@@ -280,25 +330,31 @@
   <header class="top">
     <p class="eyebrow">Ingeniería en Ciencia de Datos</p>
     <h1 class="title">Bitácora de Ingeniería</h1>
-    <p class="subtitle">Apuntes y tareas de <b>Introducción a la Ingeniería</b> — profesora <b>PhD. Andrea Vargas</b>. Un registro que se irá completando después de cada clase.</p>
+    <p class="subtitle">Apuntes y tareas del programa, organizados por <b>semestre</b>, <b>materia</b> y <b>número de clase</b>. Un registro que se irá completando después de cada clase.</p>
   </header>
 
   <div class="layout">
 
     <aside class="rail">
       <div class="panel">
-        <h2>Curso</h2>
-        <div class="meta-row"><span>Asignatura</span><span>Introducción a la Ingeniería</span></div>
+        <h2>Resumen</h2>
         <div class="meta-row"><span>Programa</span><span>Ing. Ciencia de Datos</span></div>
-        <div class="meta-row"><span>Docente</span><span>PhD. Andrea Vargas</span></div>
+        <div class="meta-row"><span>Semestre actual</span><span>1</span></div>
+        <div class="meta-row"><span>Materias</span><span>1</span></div>
         <div class="meta-row"><span>Clases registradas</span><span>1</span></div>
       </div>
 
       <div class="panel">
-        <h2>Índice de clases</h2>
-        <ul class="index-list">
-          <li><a href="#clase-1"><span class="n">01</span> Vie 11 sep — Conceptos básicos</span></a></li>
-        </ul>
+        <h2>Índice</h2>
+        <details class="idx-sem" open>
+          <summary>Semestre 1</summary>
+          <details class="idx-materia" open>
+            <summary>Introducción a la Ingeniería</summary>
+            <ul class="index-list">
+              <li><a href="#s1-intro-ing-c1"><span class="n">01</span> Vie 11 sep — Conceptos básicos</a></li>
+            </ul>
+          </details>
+        </details>
       </div>
 
       <div class="panel">
@@ -309,7 +365,24 @@
 
     <main>
 
-      <section class="clase" id="clase-1" data-fecha="2026-09-11">
+      <!-- ===================== SEMESTRE 1 ===================== -->
+      <section class="semestre-block" id="semestre-1" data-semestre="1">
+        <div class="semestre-head">
+          <span class="num">Semestre 1</span>
+          <h1>2026</h1>
+        </div>
+
+        <!-- ----- Materia: Introducción a la Ingeniería ----- -->
+        <section class="materia-block" id="s1-intro-ing" data-materia="Introducción a la Ingeniería">
+          <div class="materia-head">
+            <h2>Introducción a la Ingeniería</h2>
+            <div class="materia-meta">
+              <span>Programa: Ing. Ciencia de Datos</span>
+              <span>Docente: PhD. Andrea Vargas</span>
+            </div>
+          </div>
+
+      <section class="clase" id="s1-intro-ing-c1" data-fecha="2026-09-11">
         <div class="clase-head">
           <span class="clase-fecha">Clase 01 · Vie 11 sep 2026</span>
           <h2>Conceptos básicos — Introducción a la Ingeniería</h2>
@@ -505,13 +578,47 @@
         </article>
 
       </section>
+      <!-- /clase s1-intro-ing-c1 -->
+
+        </section>
+        <!-- /materia s1-intro-ing -->
+
+      </section>
+      <!-- /semestre 1 -->
 
       <!--
         Cómo seguir esta bitácora:
-        - Cada clase nueva es un <section class="clase" id="clase-N"> con el mismo
-          encabezado (fecha + tema) y artículos <article class="tema"> por punto tratado.
-        - Se agrega su entrada correspondiente en el índice de la barra lateral.
-        - Las tareas asignadas van en el panel "Tareas pendientes" como <li> con fecha límite.
+
+        1. Semestre nuevo:
+           <section class="semestre-block" id="semestre-N" data-semestre="N">
+             <div class="semestre-head"><span class="num">Semestre N</span><h1>Año</h1></div>
+             ... materias ...
+           </section>
+
+        2. Materia nueva dentro de un semestre:
+           <section class="materia-block" id="sN-slug-materia" data-materia="Nombre de la materia">
+             <div class="materia-head">
+               <h2>Nombre de la materia</h2>
+               <div class="materia-meta"><span>Programa: ...</span><span>Docente: ...</span></div>
+             </div>
+             ... clases ...
+           </section>
+
+        3. Clase nueva dentro de una materia:
+           <section class="clase" id="sN-slug-materia-cM" data-fecha="AAAA-MM-DD">
+             <div class="clase-head">
+               <span class="clase-fecha">Clase 0M · día DD mes AAAA</span>
+               <h2>Título de la clase</h2>
+               <span class="clase-sub">Resumen breve.</span>
+             </div>
+             <article class="tema">...</article>
+           </section>
+
+        4. Reflejar cada nivel nuevo en el panel "Índice" de la barra lateral
+           (<details class="idx-sem">Semestre</details> > <details class="idx-materia">Materia</details> > <ul class="index-list">Clases</ul>),
+           y actualizar los contadores del panel "Resumen".
+
+        5. Las tareas asignadas van en el panel "Tareas pendientes" como <li> con fecha límite.
       -->
 
       <footer class="end">Última actualización: clase del 11 de septiembre de 2026.</footer>
