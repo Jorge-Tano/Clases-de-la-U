@@ -401,6 +401,23 @@
   .taller ol, .taller ul{margin:6px 0 0; padding-left:20px; font-size:.92rem;}
   .taller li{margin:3px 0;}
 
+  /* ---------- diagrama anidado de conjuntos numéricos ---------- */
+  .set-nest fieldset{
+    border:2px solid var(--line); border-radius:14px;
+    padding:12px; margin:0;
+  }
+  .set-nest legend{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; font-weight:700;
+    padding:2px 8px; border-radius:6px;
+    background:var(--accent-soft); color:var(--accent-strong);
+  }
+  .set-nest .set-c{border-color:var(--accent);}
+  .set-qp{
+    margin-top:10px; font-size:.85rem; padding:8px 10px;
+    background:var(--task-soft); border-radius:8px; color:var(--ink);
+  }
+  .set-qp b{color:var(--task);}
+
   /* ---------- navegación: inicio > materia > clase ---------- */
   .breadcrumb{
     font-family:"IBM Plex Mono",monospace; font-size:.8rem;
@@ -494,8 +511,8 @@
         <h2>Resumen</h2>
         <div class="meta-row"><span>Programa</span><span>Ing. Ciencia de Datos</span></div>
         <div class="meta-row"><span>Semestre actual</span><span>1</span></div>
-        <div class="meta-row"><span>Materias</span><span>2</span></div>
-        <div class="meta-row"><span>Clases registradas</span><span>2</span></div>
+        <div class="meta-row"><span>Materias</span><span>3</span></div>
+        <div class="meta-row"><span>Clases registradas</span><span>4</span></div>
         <div class="meta-row"><span>Próxima entrega</span><span>Quiz #1 · 27/09</span></div>
       </div>
 
@@ -513,6 +530,13 @@
             <summary>Matemáticas Discretas 1</summary>
             <ul class="index-list">
               <li><a href="#s1-mdisc-c1"><span class="n">01</span> Dom 13 sep — Presentación + Lógica Proposicional</a></li>
+            </ul>
+          </details>
+          <details class="idx-materia" open>
+            <summary>Matemáticas</summary>
+            <ul class="index-list">
+              <li><a href="#s1-mate-c1"><span class="n">01</span> Sáb 12 sep — Conjuntos, operaciones, potencias</a></li>
+              <li><a href="#s1-mate-c2"><span class="n">02</span> Sáb 19 sep — Racionalización y polinomios</a></li>
             </ul>
           </details>
         </details>
@@ -1136,6 +1160,290 @@
         </section>
         <!-- /materia s1-mdisc -->
 
+        <!-- ----- Materia: Matemáticas (Álgebra) ----- -->
+        <section class="materia-block" id="s1-mate" data-materia="Matemáticas">
+          <div class="materia-head">
+            <h2>Matemáticas</h2>
+            <div class="materia-meta">
+              <span>Álgebra</span>
+            </div>
+          </div>
+
+      <section class="clase" id="s1-mate-c1" data-fecha="2026-09-12">
+        <div class="clase-head">
+          <span class="clase-fecha">Clase 01 · Sáb 12 sep 2026</span>
+          <h2>Conjuntos numéricos, operaciones y potencias/raíces</h2>
+          <span class="clase-sub">Base del curso: de dónde salen los números con los que trabajamos, cómo operar con fracciones y signos, y las propiedades de potencias y raíces.</span>
+        </div>
+
+        <article class="tema">
+          <h3><span class="idx">1</span> Conjuntos numéricos</h3>
+          <p>Los conjuntos se van encajando uno dentro de otro: todo Natural es Entero, todo Entero es Racional, todo Racional es Real, y todo Real es Complejo. Los Irracionales son Reales que quedan <b>fuera</b> de los Racionales.</p>
+          <div class="set-nest">
+            <fieldset class="set-c">
+              <legend>Complejos (C)</legend>
+              <fieldset class="set-r">
+                <legend>Reales (R)</legend>
+                <fieldset class="set-q">
+                  <legend>Racionales (Q)</legend>
+                  <fieldset class="set-e">
+                    <legend>Enteros (E)</legend>
+                    <fieldset class="set-n">
+                      <legend>Naturales (N)</legend>
+                    </fieldset>
+                  </fieldset>
+                </fieldset>
+                <div class="set-qp"><b>Irracionales (Q′)</b> — no se pueden escribir como a/b: π, √2, e... decimales no periódicos.</div>
+              </fieldset>
+            </fieldset>
+          </div>
+          <div class="pair" style="margin-top:14px;">
+            <div class="card">
+              <h4>Naturales (N)</h4>
+              <p>Enteros positivos: 1, 2, 3... Todos son positivos, así que la resta de dos consecutivos siempre da positivo.</p>
+            </div>
+            <div class="card">
+              <h4>Enteros (E)</h4>
+              <p>Naturales + su parte negativa (inverso aditivo de cada natural) + el 0. El <b>inverso aditivo</b> de un número es el que, sumado con él, da 0 (ej.: el inverso de 5 es −5).</p>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="card">
+              <h4>Racionales (Q)</h4>
+              <p>Todo número que se puede escribir como una relación (fracción) a/b, con a y b enteros y b≠0.</p>
+            </div>
+            <div class="card">
+              <h4>Irracionales (Q′)</h4>
+              <p>No existe forma de escribirlos como a/b. Su parte decimal no es periódica: π, √2, e, etc.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">2</span> Suma y resta de fracciones</h3>
+          <p><b>Suma:</b> operación que combina dos o más cantidades para obtener un total (a+b=c). <b>Resta:</b> mismo proceso, solo cambia el signo del segundo término.</p>
+          <div class="pair">
+            <div class="card">
+              <h4>Fracciones heterogéneas (distinto denominador)</h4>
+              <p class="mono">a/b + c/d = (ad + bc) / bd</p>
+            </div>
+            <div class="card">
+              <h4>Fracciones homogéneas (mismo denominador)</h4>
+              <p>Se suman/restan directamente los numeradores y se deja el mismo denominador.</p>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Ejemplo</h4>
+            <p class="mono">3/8 + 7/3 = (3·3 + 7·8) / 24 = (9 + 56) / 24 = 65/24</p>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">3</span> Jerarquía de operaciones y signos de agrupación</h3>
+          <p>Los signos de agrupación se resuelven de adentro hacia afuera: primero <span class="mono">( )</span>, luego <span class="mono">[ ]</span>, luego <span class="mono">{ }</span>.</p>
+          <div class="card" style="margin-bottom:10px;">
+            <h4>Ley de signos</h4>
+            <p class="mono">(+)·(+) = + &nbsp; (−)·(−) = + &nbsp; (+)·(−) = − &nbsp; (−)·(+) = −</p>
+          </div>
+          <div class="callout">
+            <b>Ojo al destruir una agrupación con signo negativo delante:</b> el signo se distribuye a todo lo de adentro. Ejemplo: 8−{3+[5−(2−7)]} = 8−{3+[5−(−5)]} = 8−{3+10} = 8−13 = <b>−5</b> (no 8+13).
+          </div>
+          <div class="card" style="margin-top:10px;">
+            <h4>Ejemplo con fracciones</h4>
+            <p class="mono">3/4 − {2/3 − [5/6 − (1/2 − 3/8)]}</p>
+            <ol class="steps">
+              <li>1/2 − 3/8 = 4/8 − 3/8 = 1/8</li>
+              <li>5/6 − 1/8 = 20/24 − 3/24 = 17/24</li>
+              <li>2/3 − 17/24 = 16/24 − 17/24 = −1/24</li>
+              <li>3/4 − (−1/24) = 18/24 + 1/24 = <b>19/24</b></li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">4</span> Propiedades de la potencia y la raíz</h3>
+          <p><b>Potencia:</b> operación que consiste en multiplicar un número las veces que lo indica el exponente (o "amplificar" una cantidad).</p>
+          <div class="pair">
+            <div class="card">
+              <h4>Potencia</h4>
+              <table class="truth">
+                <tr><th>Regla</th><th>Ejemplo</th></tr>
+                <tr><td>0ⁿ = 0 (n≠0)</td><td>0⁵ = 0</td></tr>
+                <tr><td>a⁰ = 1 (a≠0)</td><td>5⁰ = 1</td></tr>
+                <tr><td>aⁿ·aᵐ = aⁿ⁺ᵐ</td><td>5²·5³ = 5⁵</td></tr>
+                <tr><td>aⁿ/aᵐ = aⁿ⁻ᵐ</td><td>5²/5³ = 5⁻¹</td></tr>
+                <tr><td>[aⁿ]ᵐ = aⁿ·ᵐ</td><td>[5²]³ = 5⁶</td></tr>
+                <tr><td>(a·b)ⁿ = aⁿ·bⁿ</td><td>[5·6]² = 5²·6²</td></tr>
+                <tr><td>1/aⁿ = a⁻ⁿ</td><td>1/5² = 5⁻²</td></tr>
+                <tr><td>1ⁿ = 1</td><td>1⁵ = 1</td></tr>
+                <tr><td>aⁿ/ᵐ = ᵐ√(aⁿ)</td><td>exponente fraccionario = raíz</td></tr>
+              </table>
+            </div>
+            <div class="card">
+              <h4>Raíz</h4>
+              <table class="truth">
+                <tr><th>Regla</th><th>Nota</th></tr>
+                <tr><td>ⁿ√(aᵐ) = aᵐ/ⁿ</td><td>inversa de la potencia</td></tr>
+                <tr><td>ⁿ√0 = 0</td><td>&nbsp;</td></tr>
+                <tr><td>ⁿ√(ab) = ⁿ√a·ⁿ√b</td><td>se reparte en un producto</td></tr>
+                <tr><td>ⁿ√(a/b) = ⁿ√a/ⁿ√b</td><td>se reparte en una división</td></tr>
+                <tr><td>ᵐ√(ⁿ√a) = ᵐ·ⁿ√a</td><td>raíz de una raíz: se multiplican los índices</td></tr>
+                <tr><td>ⁿ√(aⁿ) = |a|</td><td>&nbsp;</td></tr>
+                <tr><td>ⁿ√1 = 1</td><td>&nbsp;</td></tr>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">5</span> Términos algebraicos</h3>
+          <p>Un término tiene la forma ±axⁿ: el <b>operador</b> (+/−) separa términos, <b>a</b> es la constante (a≠0), <b>x</b> es la parte literal (variable) y <b>n</b> el exponente.</p>
+          <div class="callout">
+            <b>Términos semejantes:</b> solo se pueden sumar o restar entre sí. Deben tener la misma parte literal (misma variable, mismo exponente y, si hay radical, el mismo índice y radicando).
+          </div>
+          <div class="pair" style="margin-top:10px;">
+            <div class="card">
+              <h4>No son semejantes</h4>
+              <p class="mono">ax^(n−1) + bx^(n+1)</p>
+              <p class="mono">a·ⁿ√x − b·ⁿ√y</p>
+              <p class="note">Exponentes o radicandos distintos: no se pueden combinar, se dejan indicados.</p>
+            </div>
+            <div class="card">
+              <h4>Sí son semejantes</h4>
+              <p class="mono">a√x/(y−1) + b√x/(y−1)</p>
+              <p class="note">Misma parte literal exacta: se suman los coeficientes (a+b) y se deja la parte literal igual.</p>
+            </div>
+          </div>
+          <p class="note" style="margin-top:10px;"><b>Al multiplicar</b> potencias o radicales de la misma base/índice, los exponentes se suman: (a·xⁿ⁺¹)(b·xⁿ⁺¹) = ab·x²⁽ⁿ⁺¹⁾, y (a·ⁿ√x)(b·ⁿ√y) = ab·ⁿ√(xy).</p>
+          <div class="callout">
+            <b>Tarea que dejaron para la próxima clase:</b> investigar qué es la "racionalización de expresiones" — queda resuelta al inicio de la Clase 02.
+          </div>
+        </article>
+
+      </section>
+      <!-- /clase s1-mate-c1 -->
+
+      <section class="clase" id="s1-mate-c2" data-fecha="2026-09-19">
+        <div class="clase-head">
+          <span class="clase-fecha">Clase 02 · Sáb 19 sep 2026</span>
+          <h2>Racionalización, grado de polinomios y división polinómica</h2>
+          <span class="clase-sub">Arranca respondiendo la tarea de racionalización y sigue con productos notables, multiplicación y división de polinomios.</span>
+        </div>
+
+        <article class="tema">
+          <h3><span class="idx">1</span> Racionalización de expresiones</h3>
+          <div class="callout">
+            <b>¿Qué es?</b> Racionalizar una expresión es transformar una fracción que tiene una raíz en el denominador (o numerador) en una expresión equivalente <b>sin radicales</b> en ese lugar, multiplicando por una fracción "conveniente" que vale 1 (el radical sobre sí mismo, o el conjugado sobre sí mismo).
+          </div>
+          <div class="pair" style="margin-top:10px;">
+            <div class="card">
+              <h4>Caso 1 · Raíz simple en el denominador</h4>
+              <p>Se multiplica arriba y abajo por la misma raíz, para que abajo quede sin radical.</p>
+              <p class="mono">1/(3√x) = (1·√x)/(3√x·√x) = √x / 3x</p>
+            </div>
+            <div class="card">
+              <h4>Caso 2 · Binomio con raíz (conjugado)</h4>
+              <p>Se multiplica por el <b>conjugado</b> del denominador (mismo binomio, signo central cambiado), usando la diferencia de cuadrados (√a+b)(√a−b)=a−b².</p>
+              <p class="mono">(3x+2)/(√x+7)</p>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Ejemplo resuelto (caso 2)</h4>
+            <p class="mono">(3x+2)/(√x+7) · (√x−7)/(√x−7)</p>
+            <p class="note">Numerador: (3x+2)(√x−7) = 3x√x − 21x + 2√x − 14</p>
+            <p class="note">Denominador: (√x+7)(√x−7) = x − 49  <span class="note">(diferencia de cuadrados)</span></p>
+            <p class="mono">= (3x√x − 21x + 2√x − 14) / (x − 49)</p>
+          </div>
+          <div class="card" style="margin-top:10px;">
+            <h4>Caso 3 · Radicales de distinto índice</h4>
+            <p>Si los índices ya coinciden, los radicandos se multiplican bajo una sola raíz: ⁿ√a · ⁿ√b = ⁿ√(ab). Si los índices son distintos, primero se igualan al mínimo común múltiplo de los índices antes de operar.</p>
+            <p class="mono">⁵√x² · ⁵√x³ = ⁵√x⁵ = x</p>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">2</span> Grado del polinomio</h3>
+          <p>Al dividir dos polinomios, el grado del numerador (GN) frente al del denominador (GD) determina si el cociente existe como polinomio:</p>
+          <table class="truth">
+            <tr><th>Comparación</th><th>¿Existe como polinomio?</th></tr>
+            <tr><td>GN &gt; GD</td><td>Existe</td></tr>
+            <tr><td>GN = GD</td><td>Existe (cociente constante)</td></tr>
+            <tr><td>GN &lt; GD</td><td>No existe — queda como fracción propia</td></tr>
+          </table>
+          <div class="card" style="margin-top:10px;">
+            <h4>Ejemplo (GN=3 &gt; GD=2, existe)</h4>
+            <p class="mono">(3x³+2x²+3x+7) ÷ (x²+1) = 3x + 2 + 5/(x²+1)</p>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">3</span> Productos notables</h3>
+          <div class="pair">
+            <div class="card">
+              <h4>Cuadrado de un binomio</h4>
+              <p class="mono">(a+b)² = a² + 2ab + b²</p>
+              <p class="mono">(a−b)² = a² − 2ab + b²</p>
+            </div>
+            <div class="card">
+              <h4>Diferencia de cuadrados</h4>
+              <p class="mono">(a+b)(a−b) = a² − b²</p>
+              <p class="note">Es justo la que se usó arriba para racionalizar con conjugado.</p>
+            </div>
+          </div>
+          <div class="card" style="margin-top:10px;">
+            <h4>Cubo de un binomio</h4>
+            <p class="mono">(a+b)³ = a³ + 3a²b + 3ab² + b³</p>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">4</span> Multiplicación de polinomios</h3>
+          <p>Monomio × binomio: se distribuye. Binomio × binomio: se multiplican los 4 términos cruzados (a+b)(c+d) = ac+ad+bc+bd. Con más factores, se multiplica de a dos y se van combinando términos semejantes.</p>
+          <div class="card">
+            <h4>Ejemplo: (3x²+9y)(4x+27)(5xy+3x³)</h4>
+            <ol class="steps">
+              <li>(3x²+9y)(4x+27) = 12x³ + 81x² + 36xy + 243y</li>
+              <li>(12x³+81x²+36xy+243y)(5xy+3x³) → se distribuye cada término</li>
+              <li>Se combinan los términos semejantes (x⁴y, x³y, x²y², xy², x⁶, x⁵)</li>
+            </ol>
+            <p class="mono">= 168x⁴y + 1134x³y + 180x²y² + 1215xy² + 36x⁶ + 243x⁵</p>
+          </div>
+        </article>
+
+        <article class="tema">
+          <h3><span class="idx">5</span> División polinómica ("bajar el grado al divisor")</h3>
+          <div class="flow">
+            <span class="step">1. Dividir 1ers términos</span><span class="arrow">→</span>
+            <span class="step">2. Multiplicar y cambiar signos</span><span class="arrow">→</span>
+            <span class="step">3. Operar semejantes</span><span class="arrow">→</span>
+            <span class="step">4. Repetir</span>
+          </div>
+          <div class="callout">
+            <b>Si falta un grado intermedio</b> (por ejemplo no hay término en x²), se deja ese espacio en blanco (equivale a coeficiente 0) para no desalinear la resta de términos semejantes.
+          </div>
+          <div class="pair" style="margin-top:10px;">
+            <div class="card">
+              <h4>Ejemplo 1: (2x³+3x²−5x+6) ÷ (x+2)</h4>
+              <p class="mono">Cociente: 2x² − x − 3</p>
+              <p class="mono">Residuo: 12</p>
+              <p class="mono">= 2x² − x − 3 + 12/(x+2)</p>
+            </div>
+            <div class="card">
+              <h4>Ejemplo 2 (con espacio vacío): (x³+5x+6) ÷ (x+2)</h4>
+              <p class="note">Dividendo completo: x³ <b>+0x²</b> +5x+6 — se deja el espacio del x² en 0.</p>
+              <p class="mono">Cociente: x² − 2x + 9</p>
+              <p class="mono">Residuo: −12</p>
+              <p class="mono">= x² − 2x + 9 − 12/(x+2)</p>
+            </div>
+          </div>
+        </article>
+
+      </section>
+      <!-- /clase s1-mate-c2 -->
+
+        </section>
+        <!-- /materia s1-mate -->
+
       </section>
       <!-- /semestre 1 -->
 
@@ -1182,7 +1490,7 @@
         5. Las tareas asignadas van en el panel "Tareas pendientes" como <li> con fecha límite.
       -->
 
-      <footer class="end">Última actualización: clase del 13 de septiembre de 2026 (Matemáticas Discretas 1).</footer>
+      <footer class="end">Última actualización: clases de Matemáticas del 12 y 19 de septiembre de 2026.</footer>
     </main>
   </div>
 </div>
